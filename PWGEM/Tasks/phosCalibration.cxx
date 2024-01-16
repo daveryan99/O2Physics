@@ -173,7 +173,7 @@ struct phosCalibration {
     } else {
       LOG(fatal) << "Can not get PHOS calibration";
     }
-    
+
     if (!mSkipL1phase && mL1 == 0) { // should be read, but not read yet
       const std::vector<int>* vec = ccdb->getForTimeStamp<std::vector<int>>(mL1PhasePath, timestamp);
       if (vec) {
