@@ -255,7 +255,7 @@ struct phosCalibration {
         }
         tcorr -= shift * 25.e-9;
       }
-      
+
       int runNumber = c.bc_as<BCsWithBcSels>().runNumber();
       std::map<std::string, std::string> metadata, headers;
       const std::string run_path = Form("%s/%i", rctPath.value.data(), runNumber);
@@ -263,10 +263,10 @@ struct phosCalibration {
       if (headers.count("SOR") == 0)
         LOGF(fatal, "Cannot find start-of-run timestamp for run number in path '%s'.", run_path.data());
       int64_t sorTimestamp = atol(headers["SOR"].c_str()); // timestamp of the SOR in ms
-      
+
       if (c.amplitude() > mCellTimeMinE) {
         mHistManager.fill(HIST("timeDDL"), tcorr, bc % 4, ddl);
-        mHistManager.fill(HIST("cellTimeFromRunStart"), c.cellNumber(), tcorr, (timestamp - sorTimestamp)/1000.);
+        mHistManager.fill(HIST("cellTimeFromRunStart"), c.cellNumber(), tcorr, (timestamp - sorTimestamp) / 1000.);
         if (c.cellType() == o2::phos::HIGH_GAIN) {
           mHistManager.fill(HIST("cellTimeHG"), c.cellNumber(), tcorr);
         } else {

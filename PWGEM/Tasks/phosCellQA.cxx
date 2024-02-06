@@ -64,7 +64,7 @@ struct phosCellQA {
       cellXAxis{64, 0., 64, "x", ""},
       cellZAxis{56, 0., 56, "z", ""},
       bcAxis{3501, -0.5, 3500.5};
-      
+
     mHistManager.add("eventsTrig", "Number of trigger events", HistType::kTH1F, {{2, 0., 2.}});
     mHistManager.add("eventsAll", "Number of events", o2HistType::kTH1F, {{1, 0.5, 1.5}});
     mHistManager.add("eventsSelected", "Number of events", o2HistType::kTH1F, {{1, 0.5, 1.5}});
@@ -112,11 +112,11 @@ struct phosCellQA {
         continue;
       mHistManager.fill(HIST("cellBCSelected"), cellIR.bc);
       //       mHistManager.fill(HIST("cellAmplitude"), cell.amplitude(), cell.cellNumber());
-      
+
       if (!cell.bc_as<BCsWithBcSels>().alias_bit(mEvSelTrig))
         continue;
       mHistManager.fill(HIST("eventsTrig"), 1.);
-      
+
       if (cell.amplitude() < mMinCellAmplitude)
         continue;
       char relid[3];
