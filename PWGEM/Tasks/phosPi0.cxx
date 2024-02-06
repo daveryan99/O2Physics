@@ -59,7 +59,7 @@ struct phosPi0 {
   Configurable<float> mOccE{"minOccE", 0.6, "Minimum cluster energy to fill occupancy"};
 
   o2::framework::Service<o2::ccdb::BasicCCDBManager> ccdb;
-  
+
   using FilteredClusters = soa::Filtered<aod::CaloClusters>;
 
   HistogramRegistry mHistManager{"phosPi0Histograms"};
